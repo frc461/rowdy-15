@@ -100,9 +100,9 @@ class RowdyFifteen : public IterativeRobot
 	float r_x;
 	float r_y;
 	float missile_switch_speed_multiplier;
-	
+
 	float drive_speed_ain_value;
-	
+
 public:
 	RowdyFifteen():
 		myRobot(dt_pwm_front_left, dt_pwm_rear_left, dt_pwm_front_right, dt_pwm_rear_right),
@@ -133,13 +133,13 @@ public:
 		l_y_raw = stickl.GetY();
 		r_x_raw = stickr.GetX();
 		r_y_raw = stickr.GetY();
-		
+
 		/*
 		 * Get an instance of the Driver Station stuff
 		 */
 		ds = DriverStation::GetInstance();
 		b = DriverStationLCD::GetInstance();
-		
+
 		b->Clear();
 		b->UpdateLCD();
 
@@ -152,9 +152,9 @@ public:
 		myRobot.SetInvertedMotor(myRobot.kFrontRightMotor, true);
 		myRobot.SetInvertedMotor(myRobot.kRearLeftMotor, false);
 		myRobot.SetInvertedMotor(myRobot.kRearRightMotor, true);
-		
+
 		compressor.Start();
-		
+
 		SmartDashboard::init();
 	}
 
@@ -168,38 +168,38 @@ public:
 
 		return values;
 	}
-	
+
 	void SetJoystickButtonValueRegister(Joystick *joystick, vector<bool> *value_registry)
 	{
 		value_registry->clear();
-		
+
 		for(uint32_t i = 0; i < 12; i += 1) {
 			value_registry->push_back(joystick->GetRawButton(i + 1));
 		}
 	}
-	
+
 	void UpdateSmartDashboard()
 	{
-		SmartDashboard::PutBoolean("Compressor", (bool)compressor.GetPressureSwitchValue());
+		SmartDashboard::PutBoolean("Compressor", (bool) compressor.GetPressureSwitchValue());
 
 		SmartDashboard::PutBoolean("Blue Missile Switch", eb_values[0x4]);
 		SmartDashboard::PutBoolean("Orange Missile Switch", eb_values[0x5]);
 		SmartDashboard::PutBoolean("Green Missile Switch", eb_values[0x6]);
-		
+
 		SmartDashboard::PutBoolean("Left Wing Up Button", ea_values[0x6]);
 		SmartDashboard::PutBoolean("Left Wing Down Button", ea_values[0x7]);
 		SmartDashboard::PutBoolean("Both Wings Up Button", ea_values[0x4]);
 		SmartDashboard::PutBoolean("Both Wings Down Button", ea_values[0x5]);
 		SmartDashboard::PutBoolean("Right Wing Up Button", ea_values[0x2]);
 		SmartDashboard::PutBoolean("Right Wing Down Button", ea_values[0x3]);
-		
+
 		SmartDashboard::PutBoolean("Left Rollers Out Switch", eb_values[0x0]);
 		SmartDashboard::PutBoolean("Left Rollers In Switch", eb_values[0x1]);
 		SmartDashboard::PutBoolean("Both Rollers Out Switch", ea_values[0xa]);
 		SmartDashboard::PutBoolean("Both Rollers In Switch", ea_values[0xb]);
 		SmartDashboard::PutBoolean("Right Rollers Out Switch", ea_values[0x8]);
 		SmartDashboard::PutBoolean("Right Rollers In Switch", ea_values[0x9]);
-		
+
 		SmartDashboard::PutBoolean("Fire Button", ea_values[0x0]);
 	}
 
@@ -212,75 +212,75 @@ public:
 		 * Supress warnings about not updating often enough.
 		 */
 		myRobot.SetSafetyEnabled(false);
-		
+
 		b->Clear();
 		b->Printf(b->kUser_Line1, 1, "Starting autonomous (init)!");
 		b->Printf(b->kUser_Line2, 1, "%f loops/sec.", GetLoopsPerSec());
 		b->UpdateLCD();
-		
+
 		if(ds->GetDigitalIn(1)) {
 			b->Printf(b->kUser_Line3, 1, "/!\\ A_1");
 			b->UpdateLCD();
-			
+
 			Wait(0.0);
-			
+
 			leftWing.Set(0.6);
 			rightWing.Set(-0.6);
 			Wait(1.0);
-			
+
 			leftWing.Set(0);
 			rightWing.Set(0);
 			Wait(0.5);
-			
+
 			leftWing.Set(-0.6);
 			rightWing.Set(0.6);
 			leftRollers.Set(1.0);
 			rightRollers.Set(-1.0);
 			Wait(1.0);
-			
+
 			leftWing.Set(0.0);
 			rightWing.Set(0.0);
 			leftRollers.Set(0.0);
-			rightRollers.Set(0.0);		
+			rightRollers.Set(0.0);
 			myRobot.MecanumDrive_Cartesian(0.0, -0.5, 0.0);
 			Wait(ds->GetAnalogIn(1));
-			
+
 			myRobot.MecanumDrive_Cartesian(0.0, 0.0, 0.0);
 			Wait(0.1);
-			
+
 			leftWing.Set(0.6);
 			rightWing.Set(-0.6);
 			Wait(1.0);
-			
+
 			leftWing.Set(0.0);
 			rightWing.Set(0.0);
 			aSolenoid.Set(true);
 			bSolenoid.Set(true);
 			Wait(1.0);
-			
+
 			aSolenoid.Set(false);
 			bSolenoid.Set(false);
 			Wait(1.0);
 		} else if(ds->GetDigitalIn(2)) {
 			b->Printf(b->kUser_Line3, 1, "/!\\ A_2");
 			b->Printf(b->kUser_Line4, 1, "Aw hell naw.");
-			b->UpdateLCD();			
-			
+			b->UpdateLCD();
+
 			Wait(3.0);
 		} else if(!ds->GetDigitalIn(1) && !ds->GetDigitalIn(2) && !ds->GetDigitalIn(3)) {
 			b->Printf(b->kUser_Line3, 1, "/!\\ !A_*");
 			b->Printf(b->kUser_Line4, 1, "Aw hell naw.");
 			b->UpdateLCD();
-			
+
 			Wait(3.0);
 		}
-		
+
 		b->Clear();
 		b->Printf(b->kUser_Line1, 1, "Done with autonomous (init)!");
 		b->Printf(b->kUser_Line2, 1, "%f loops/sec.", GetLoopsPerSec());
 		b->UpdateLCD();
 	}
-	
+
 	void AutonomousPeriodic()
 	{
 		UpdateSmartDashboard();
@@ -290,7 +290,7 @@ public:
 	{
 		myRobot.SetSafetyEnabled(false);
 	}
-	
+
 	/*
 	 * Runs the motors with mecanum.
 	 *
@@ -307,23 +307,23 @@ public:
 		r_y_raw = stickr.GetY();
 
 		drive_speed_ain_value = ds->GetAnalogIn(2);
-		
+
 		missile_switch_speed_multiplier = 1.0;
-		
+
 		if(ds->GetDigitalIn(8)) {
 			if(eb_values[0x4]) {
 				missile_switch_speed_multiplier *= 0.5;
 			}
-			
+
 			if(eb_values[0x5]) {
 				missile_switch_speed_multiplier *= 0.5;
 			}
-			
+
 			if(eb_values[0x6]) {
 				missile_switch_speed_multiplier *= 0.5;
 			}
 		}
-		
+
 		/*
 		 * Apply weighting factors and alleviate the garbage that the joysticks
 		 * output when resting (the phantom values).
@@ -337,7 +337,7 @@ public:
 		r_values = GetJoystickButtonValues(&stickr);
 		ea_values = GetJoystickButtonValues(&stickea);
 		eb_values = GetJoystickButtonValues(&stickeb);*/
-		
+
 		SetJoystickButtonValueRegister( &stickl,  &l_values);
 		SetJoystickButtonValueRegister( &stickr,  &r_values);
 		SetJoystickButtonValueRegister(&stickea, &ea_values);
@@ -433,7 +433,7 @@ public:
 		/*
 		 * Write the values for the wings
 		 */
-		
+
 		if(ea_values[0x6] || ea_values[0x4]) {
 			leftWing.Set(-0.6);
 		} else if(ea_values[0x7] || ea_values[0x5]) {
@@ -449,7 +449,7 @@ public:
 		} else {
 			rightWing.Set(0.0);
 		}
-		
+
 		if(ea_values[0x0]) {
 			aSolenoid.Set(true);
 			bSolenoid.Set(true);
@@ -457,9 +457,9 @@ public:
 			aSolenoid.Set(false);
 			bSolenoid.Set(false);
 		}
-		
+
 		UpdateSmartDashboard();
-		
+
 		/*
 		 * Input the values into the drive function.
 		 */
@@ -482,23 +482,23 @@ public:
 		b->Printf(b->kUser_Line1, 1, "TEST mode!");
 		b->UpdateLCD();
 	}
-	
+
 	void TestPeriodic()
 	{
 		UpdateSmartDashboard();
 	}
-	
+
 	void DisabledInit()
 	{
 	}
-	
+
 	void DisabledPeriodic()
-	{	
+	{
 		SetJoystickButtonValueRegister( &stickl,  &l_values);
 		SetJoystickButtonValueRegister( &stickr,  &r_values);
 		SetJoystickButtonValueRegister(&stickea, &ea_values);
 		SetJoystickButtonValueRegister(&stickeb, &eb_values);
-		
+
 		b->Clear();
 		b->Printf(b->kUser_Line1, 1, "Robot is disabled!");
 		b->Printf(b->kUser_Line5, 1, "a %s%s%s%s%s%s%s%s%s%s%s%s",
@@ -528,9 +528,9 @@ public:
 				(eb_values[0xa] ? "b" : ""),
 				(eb_values[0xb] ? "c" : ""));
 		b->UpdateLCD();
-		
+
 		UpdateSmartDashboard();
-		
+
 		Wait(0.05);
 	}
 };
