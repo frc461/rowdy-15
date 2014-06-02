@@ -54,11 +54,6 @@ enum Attack3Buttons {
 	atk3_btn_thumb_right = atk3_btn_5
 };
 
-#define stklport 1
-#define stkrport 2
-#define stkeaport 3
-#define stkebport 4
-
 #define master_js_null_zone 0.06
 #define left_js_null_zone master_js_null_zone
 #define right_js_null_zone master_js_null_zone
