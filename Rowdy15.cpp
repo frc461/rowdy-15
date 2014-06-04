@@ -279,7 +279,7 @@ public:
 			//Stop drive and Rollers In/Out Left + Right Wing Up
 			myRobot.MecanumDrive_Cartesian(0.0, 0.0, 0.0);
 			Wait(0.1);
-			leftRollers.Set(-0.1);
+			leftRollers.Set(-0.3);
 			rightRollers.Set(-1.0);
 			rightWing.Set(1.0);
 			leftWing.Set(-0.4);
@@ -475,16 +475,13 @@ public:
 			rightRollers.Set(0.0);
 		}
 		
-		if(ea_values[0xb]) {
+		if(ea_values[0xa]) {
 			rightRollers.Set(1.0);
 			leftRollers.Set(-1.0);
-		} else if(ea_values[0xa]) {
+		} else if(ea_values[0xb]) {
 			rightRollers.Set(-1.0);
 			leftRollers.Set(1.0);
-		} else {
-			rightRollers.Set(0.0);
-			leftRollers.Set(0.0);
-		}
+		} 
 
 		/*
 		 * Write the values for the wings
