@@ -267,7 +267,7 @@ public:
 			rightWing.Set(0.0);
 			leftRollers.Set(1.0);
 			rightRollers.Set(-1.0);
-			Wait(1.0);
+			Wait(0.8);
 			
 			//Stop Intake and Drive
 			leftRollers.Set(0.0);
@@ -278,19 +278,19 @@ public:
 			
 			//Stop drive and Rollers In/Out Left + Right Wing Up
 			myRobot.MecanumDrive_Cartesian(0.0, 0.0, 0.0);
-			Wait(0.1);
-			leftRollers.Set(-0.3);
+			Wait(0.3);
+			leftRollers.Set(-0.7);
 			rightRollers.Set(-1.0);
-			rightWing.Set(1.0);
-			leftWing.Set(-0.4);
-			Wait(0.7);
+			rightWing.Set(0.8);
+			//leftWing.Set(1.0);
+			Wait(0.4);
 			
 			//Stop Rollers and Keep Moving Wings
 			leftRollers.Set(0.0);
 			rightRollers.Set(0.0);
 			rightWing.Set(-1.0);
-			leftWing.Set(0.4);
-			Wait(0.6);
+			//leftWing.Set(0.4);
+			Wait(0.5);
 			
 			//Stop Wing Down + FIRE!!!!
 			rightWing.Set(0.0);
