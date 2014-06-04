@@ -257,6 +257,56 @@ public:
 			bSolenoid.Set(false);
 			Wait(1.0);
 		} else if(ds->GetDigitalIn(2)) {
+			//Move the wings down
+			leftWing.Set(0.6);
+			rightWing.Set(-0.6);
+			Wait(0.7);
+			
+			//Stop Moving Wings and Intake Balls
+			leftWing.Set(0.0);
+			rightWing.Set(0.0);
+			leftRollers.Set(1.0);
+			rightRollers.Set(-1.0);
+			Wait(1.0);
+			
+			//Stop Intake and Drive
+			leftRollers.Set(0.0);
+			rightRollers.Set(0.0);
+			Wait(0.2);
+			myRobot.MecanumDrive_Cartesian(0.0, -0.5, 0.0);
+			Wait(ds->GetAnalogIn(1));
+			
+			//Stop drive and Rollers In/Out Left + Right Wing Up
+			myRobot.MecanumDrive_Cartesian(0.0, 0.0, 0.0);
+			Wait(0.1);
+			leftRollers.Set(-0.1);
+			rightRollers.Set(-1.0);
+			rightWing.Set(1.0);
+			leftWing.Set(-0.4);
+			Wait(0.7);
+			
+			//Stop Rollers and Keep Moving Wings
+			leftRollers.Set(0.0);
+			rightRollers.Set(0.0);
+			rightWing.Set(-1.0);
+			leftWing.Set(0.4);
+			Wait(0.6);
+			
+			//Stop Wing Down + FIRE!!!!
+			rightWing.Set(0.0);
+			leftWing.Set(0.0);
+			Wait(0.2);
+			
+			aSolenoid.Set(true);
+			bSolenoid.Set(true);
+			Wait (1.0);
+			
+			
+			//STOP FIRING!!!
+			aSolenoid.Set(false);
+			bSolenoid.Set(false);
+			Wait(1.0);
+			
 			b->Printf(b->kUser_Line3, 1, "/!\\ A_2");
 			b->Printf(b->kUser_Line4, 1, "Aw hell naw.");
 			b->UpdateLCD();
@@ -424,10 +474,23 @@ public:
 		} else {
 			rightRollers.Set(0.0);
 		}
+		
+		if(ea_values[0xb]) {
+			rightRollers.Set(1.0);
+			leftRollers.Set(-1.0);
+		} else if(ea_values[0xa]) {
+			rightRollers.Set(-1.0);
+			leftRollers.Set(1.0);
+		} else {
+			rightRollers.Set(0.0);
+			leftRollers.Set(0.0);
+		}
 
 		/*
 		 * Write the values for the wings
 		 */
+		
+//		0xa is in 0xb is out
 
 		if(ea_values[0x6] || ea_values[0x4]) {
 			leftWing.Set(-0.6);
