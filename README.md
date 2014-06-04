@@ -1,6 +1,7 @@
-# Rowdy-15
+rowdy-15
+========
 
-This is the code for our 2013-2014 robot, Rowdy 15.
+This is the code for Rowdy 15, our robot for the 2013-2014 season.
 
 ## [`ucpp`](https://github.com/nikitakit/ucpp) Setup
 
