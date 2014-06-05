@@ -37,6 +37,68 @@ enum RobotJoystickPorts {
 	j_right = j_2
 };
 
+enum DriverStationLeftJoystickButtons {
+	ljb_1 = 1,
+	ljb_2 = 2,
+	ljb_3 = 3,
+	ljb_4 = 4,
+	ljb_5 = 5,
+	ljb_6 = 6,
+	ljb_7 = 7,
+	ljb_8 = 8,
+	ljb_9 = 9,
+	ljb_10 = 10,
+	ljb_11 = 11,
+	ljb_12 = 12,
+	ljb_trigger = ljb_1
+};
+
+enum DriverStationRightJoystickButtons {
+	rjb_1 = 1,
+	rjb_2 = 2,
+	rjb_3 = 3,
+	rjb_4 = 4,
+	rjb_5 = 5,
+	rjb_6 = 6,
+	rjb_7 = 7,
+	rjb_8 = 8,
+	rjb_9 = 9,
+	rjb_10 = 10,
+	rjb_11 = 11,
+	rjb_12 = 12,
+	rjb_trigger = rjb_1
+};
+
+enum DriverStationExtraJoystickAButtons {
+	ejab_1 = 1,
+	ejab_2 = 2,
+	ejab_3 = 3,
+	ejab_4 = 4,
+	ejab_5 = 5,
+	ejab_6 = 6,
+	ejab_7 = 7,
+	ejab_8 = 8,
+	ejab_9 = 9,
+	ejab_10 = 10,
+	ejab_11 = 11,
+	ejab_12 = 12
+};
+
+enum DriverStationExtraJoystickBButtons {
+	ejbb_1 = 1,
+	ejbb_2 = 2,
+	ejbb_3 = 3,
+	ejbb_4 = 4,
+	ejbb_5 = 5,
+	ejbb_6 = 6,
+	ejbb_7 = 7,
+	ejbb_8 = 8,
+	ejbb_9 = 9,
+	ejbb_10 = 10,
+	ejbb_11 = 11,
+	ejbb_12 = 12
+};
+
 enum Attack3Buttons {
 	atk3_btn_1 = 0x1,
 	atk3_btn_2 = 0x2,
@@ -88,13 +150,13 @@ class RowdyFifteen : public IterativeRobot
 	float l_y;
 	float r_x;
 	float r_y;
-	
+
 	float missile_switch_speed_multiplier;
 	float drive_speed_ain_value;
 
 public:
 	RowdyFifteen();
-	
+
 	void UpdateSmartDashboard();
 	void SetJoystickButtonValueRegister(Joystick *, vector<bool> *);
 	void SetJoystickButtonValueRegisters();
@@ -102,16 +164,16 @@ public:
 
 	void DisabledInit();
 	void DisabledPeriodic();
-	
+
 	void TeleopInit();
 	void TeleopPeriodic();
-	
+
 	void AutonomousInit();
 	void AutonomousPeriodic();
 
 	void PracticeInit();
 	void PracticePeriodic();
-	
+
 	void TestInit();
 	void TestPeriodic();
 };
