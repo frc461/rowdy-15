@@ -1,8 +1,8 @@
-#include <math.h>
-#include "WPILib.h"
-
 #ifndef ROWDY15_H
 #define ROWDY15_H
+
+#include <math.h>
+#include "WPILib.h"
 
 enum RobotDriveTrainPorts {
 	dt_pwm_rear_right = 1,
