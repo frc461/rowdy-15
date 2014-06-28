@@ -291,11 +291,9 @@ void RowdyFifteen::TeleopPeriodic()
 		rightRollers.Set(0.0);
 	}
 
-
 	/*
 	 * Write the values for the wings
 	 */
-
 	if(ea_values[0x6] || ea_values[0x4]) {
 		leftWing.Set(-0.6);
 	} else if(ea_values[0x7] || ea_values[0x5]) {
@@ -507,6 +505,5 @@ void RowdyFifteen::TestPeriodic()
 	LCDPrint();
 	UpdateSmartDashboard();
 }
-
 
 START_ROBOT_CLASS(RowdyFifteen);
