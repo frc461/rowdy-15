@@ -71,6 +71,15 @@ RowdyFifteen::RowdyFifteen(void):
 	SmartDashboard::init();
 }
 
+void RowdyFifteen::FactorJoystickValues(float *result, float *raw, float null_zone, float factor)
+{
+	if(*raw <= +null_zone || *raw >= -null_zone) {
+		*raw = 0.0;
+	}
+
+	*result = *raw * factor;
+}
+
 /*
  * This function updates the SmartDashboard values
  */
@@ -245,10 +254,11 @@ void RowdyFifteen::TeleopPeriodic()
 	 * Apply weighting factors and alleviate the garbage that the joysticks
 	 * output when resting (the phantom values).
 	 */
-	l_x = master_power_factor * (((l_x_raw >  left_js_null_zone) || (l_x_raw < - left_js_null_zone)) ? l_x_raw : 0.0) * (drive_speed_ain_value / 5.0) * missile_switch_speed_multiplier;
-	l_y = master_power_factor * (((l_y_raw >  left_js_null_zone) || (l_y_raw < - left_js_null_zone)) ? l_y_raw : 0.0) * (drive_speed_ain_value / 5.0) * missile_switch_speed_multiplier;
-	r_x = master_power_factor * (((r_x_raw > right_js_null_zone) || (r_x_raw < -right_js_null_zone)) ? r_x_raw : 0.0) * (drive_speed_ain_value / 5.0) * missile_switch_speed_multiplier;
-	r_y = master_power_factor * (((r_y_raw > right_js_null_zone) || (r_y_raw < -right_js_null_zone)) ? r_y_raw : 0.0) * (drive_speed_ain_value / 5.0) * missile_switch_speed_multiplier;
+
+	FactorJoystickValues(&l_x, &l_x_raw,  left_js_null_zone, master_power_factor * (drive_speed_ain_value / 5.0) * missile_switch_speed_multiplier);
+	FactorJoystickValues(&l_y, &l_y_raw,  left_js_null_zone, master_power_factor * (drive_speed_ain_value / 5.0) * missile_switch_speed_multiplier);
+	FactorJoystickValues(&r_x, &r_x_raw, right_js_null_zone, master_power_factor * (drive_speed_ain_value / 5.0) * missile_switch_speed_multiplier);
+	FactorJoystickValues(&r_y, &r_y_raw, right_js_null_zone, master_power_factor * (drive_speed_ain_value / 5.0) * missile_switch_speed_multiplier);
 
 	SetJoystickButtonValueRegisters();
 

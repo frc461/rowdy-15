@@ -157,6 +157,8 @@ class RowdyFifteen : public IterativeRobot
 public:
 	RowdyFifteen();
 
+	void FactorJoystickValues(float *result, float *raw, float null_zone, float factor);
+
 	void UpdateSmartDashboard();
 	void SetJoystickButtonValueRegister(Joystick *, vector<bool> *);
 	void SetJoystickButtonValueRegisters();
