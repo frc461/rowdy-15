@@ -275,29 +275,22 @@ void RowdyFifteen::TeleopPeriodic()
 	/*
 	 * Write the values for the rollers
 	 */
-	if(eb_values[0x1]) {
-		leftRollers.Set(1.0);
-	} else if(eb_values[0x0]) {
+	if(eb_values[0x0] || ea_values[0xa]) {
 		leftRollers.Set(-1.0);
+	} else if(eb_values[0x1] || ea_values[0xb]) {
+		leftRollers.Set(1.0);
 	} else {
 		leftRollers.Set(0.0);
 	}
 
-	if(ea_values[0x8]) {
+	if(ea_values[0x8] || ea_values[0xa]) {
 		rightRollers.Set(1.0);
-	} else if(ea_values[0x9]) {
+	} else if(ea_values[0x9] || ea_values[0xb]) {
 		rightRollers.Set(-1.0);
 	} else {
 		rightRollers.Set(0.0);
 	}
 
-	if(ea_values[0xa]) {
-		rightRollers.Set(1.0);
-		leftRollers.Set(-1.0);
-	} else if(ea_values[0xb]) {
-		rightRollers.Set(-1.0);
-		leftRollers.Set(1.0);
-	}
 
 	/*
 	 * Write the values for the wings
