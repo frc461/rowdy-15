@@ -9,8 +9,6 @@
 #define master_power_factor 0.8
 #define master_trigger_power_factor 0.25
 
-#define dual_triggers_multiply_again false
-
 RowdyFifteen::RowdyFifteen(void):
 	myRobot(dt_pwm_front_left, dt_pwm_rear_left, dt_pwm_front_right, dt_pwm_rear_right),
 	stickl(j_left),
@@ -270,20 +268,6 @@ void RowdyFifteen::TeleopPeriodic()
 	}
 
 	if(r_t) {
-		r_x *= master_trigger_power_factor;
-		r_y *= master_trigger_power_factor;
-	}
-
-	/*
-	 * This is an intentional duplicate of the above code. If both triggers are pulled,
-	 * it would be nice if the values would go down by an additional power factor.
-	 *
-	 * So, if both triggers are pulled, then both left and right joysticks will be
-	 * multiplied by 0.125 overall.
-	 */
-	if((l_t && r_t) && dual_triggers_multiply_again) {
-		l_x *= master_trigger_power_factor;
-		l_y *= master_trigger_power_factor;
 		r_x *= master_trigger_power_factor;
 		r_y *= master_trigger_power_factor;
 	}
