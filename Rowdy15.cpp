@@ -254,7 +254,6 @@ void RowdyFifteen::TeleopPeriodic()
 	 * Apply weighting factors and alleviate the garbage that the joysticks
 	 * output when resting (the phantom values).
 	 */
-
 	FactorJoystickValues(&l_x, &l_x_raw,  left_js_null_zone, master_power_factor * (drive_speed_ain_value / 5.0) * missile_switch_speed_multiplier);
 	FactorJoystickValues(&l_y, &l_y_raw,  left_js_null_zone, master_power_factor * (drive_speed_ain_value / 5.0) * missile_switch_speed_multiplier);
 	FactorJoystickValues(&r_x, &r_x_raw, right_js_null_zone, master_power_factor * (drive_speed_ain_value / 5.0) * missile_switch_speed_multiplier);
@@ -283,7 +282,7 @@ void RowdyFifteen::TeleopPeriodic()
 	}
 
 	/*
-	 * Write the values for the rollers
+	 * Write the values for the roller motors.
 	 */
 	if(eb_values[0x0] || ea_values[0xa]) {
 		leftRollers.Set(-1.0);
@@ -319,6 +318,7 @@ void RowdyFifteen::TeleopPeriodic()
 	} else {
 		rightWing.Set(0.0);
 	}
+
 
 	if(ea_values[0x0]) {
 		aSolenoid.Set(true);
