@@ -62,6 +62,15 @@ RowdyFifteen::RowdyFifteen(void):
 	SmartDashboard::init();
 }
 
+void RowdyFifteen::FactorJoystickValues(float *result, float *raw, float null_zone, float factor)
+{
+	if(*raw <= +null_zone || *raw >= -null_zone) {
+		*raw = 0.0;
+	}
+
+	*result = *raw * factor;
+}
+
 /*
  * This function updates the SmartDashboard values
  */
@@ -199,7 +208,7 @@ void RowdyFifteen::DisabledPeriodic()
 void RowdyFifteen::PracticeInit()
 {
 	SetJoystickButtonValueRegisters();
-	
+
 	LCDPrint();
 	UpdateSmartDashboard();
 }
@@ -207,7 +216,7 @@ void RowdyFifteen::PracticeInit()
 void RowdyFifteen::PracticePeriodic()
 {
 	SetJoystickButtonValueRegisters();
-	
+
 	LCDPrint();
 	UpdateSmartDashboard();
 }

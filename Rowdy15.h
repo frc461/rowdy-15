@@ -38,13 +38,15 @@ class RowdyFifteen : public IterativeRobot
 	float l_y;
 	float r_x;
 	float r_y;
-	
+
 	float missile_switch_speed_multiplier;
 	float drive_speed_ain_value;
 
 public:
 	RowdyFifteen();
-	
+
+	void FactorJoystickValues(float *result, float *raw, float null_zone, float factor);
+
 	void UpdateSmartDashboard();
 	void SetJoystickButtonValueRegister(Joystick *, vector<bool> *);
 	void SetJoystickButtonValueRegisters();
@@ -52,16 +54,16 @@ public:
 
 	void DisabledInit();
 	void DisabledPeriodic();
-	
+
 	void TeleopInit();
 	void TeleopPeriodic();
-	
+
 	void AutonomousInit();
 	void AutonomousPeriodic();
 
 	void PracticeInit();
 	void PracticePeriodic();
-	
+
 	void TestInit();
 	void TestPeriodic();
 };
