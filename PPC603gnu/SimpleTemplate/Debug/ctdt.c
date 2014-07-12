@@ -9,7 +9,13 @@
 
 void _GLOBAL__I__ZN12RowdyFifteen10TeleopInitEv();
 
+void _GLOBAL__I__ZN12RowdyFifteen12DisabledInitEv();
+
+void _GLOBAL__I__ZN12RowdyFifteen12PracticeInitEv();
+
 void _GLOBAL__I__ZN12RowdyFifteen14AutonomousInitEv();
+
+void _GLOBAL__I__ZN12RowdyFifteen8TestInitEv();
 
 void _GLOBAL__I__ZN12RowdyFifteenC2Ev();
 
@@ -69,7 +75,10 @@ extern void (*_ctors[])();
 void (*_ctors[])() =
     {
     _GLOBAL__I__ZN12RowdyFifteen10TeleopInitEv,
+    _GLOBAL__I__ZN12RowdyFifteen12DisabledInitEv,
+    _GLOBAL__I__ZN12RowdyFifteen12PracticeInitEv,
     _GLOBAL__I__ZN12RowdyFifteen14AutonomousInitEv,
+    _GLOBAL__I__ZN12RowdyFifteen8TestInitEv,
     _GLOBAL__I__ZN12RowdyFifteenC2Ev,
     _GLOBAL__I__ZN12PrintCommandC2EPKc,
     _GLOBAL__I__ZN9Scheduler9_instanceE,
@@ -102,7 +111,13 @@ void (*_ctors[])() =
 
 void _GLOBAL__D__ZN12RowdyFifteen10TeleopInitEv();
 
+void _GLOBAL__D__ZN12RowdyFifteen12DisabledInitEv();
+
+void _GLOBAL__D__ZN12RowdyFifteen12PracticeInitEv();
+
 void _GLOBAL__D__ZN12RowdyFifteen14AutonomousInitEv();
+
+void _GLOBAL__D__ZN12RowdyFifteen8TestInitEv();
 
 void _GLOBAL__D__ZN12RowdyFifteenC2Ev();
 
@@ -152,7 +167,10 @@ extern void (*_dtors[])();
 void (*_dtors[])() =
     {
     _GLOBAL__D__ZN12RowdyFifteen10TeleopInitEv,
+    _GLOBAL__D__ZN12RowdyFifteen12DisabledInitEv,
+    _GLOBAL__D__ZN12RowdyFifteen12PracticeInitEv,
     _GLOBAL__D__ZN12RowdyFifteen14AutonomousInitEv,
+    _GLOBAL__D__ZN12RowdyFifteen8TestInitEv,
     _GLOBAL__D__ZN12RowdyFifteenC2Ev,
     _GLOBAL__D__ZN9Scheduler9_instanceE,
     _GLOBAL__D_wpi_error_s_ModuleIndexOutOfRange,

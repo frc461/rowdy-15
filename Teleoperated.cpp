@@ -19,7 +19,6 @@ void RowdyFifteen::TeleopPeriodic()
 	r_y_raw = stickr.GetY();
 
 	drive_speed_ain_value = ds->GetAnalogIn(2);
-
 	missile_switch_speed_multiplier = 1.0;
 
 	if(ds->GetDigitalIn(8)) {
