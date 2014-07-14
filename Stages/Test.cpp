@@ -1,15 +1,23 @@
-#include "Rowdy15.h"
+#include "Rowdy15/Rowdy15.h"
 
-void RowdyFifteen::TeleopInit()
+/*
+ * Runs during test mode
+ */
+void RowdyFifteen::TestInit()
 {
+	SetJoystickButtonValueRegisters();
+
 	myRobot.SetSafetyEnabled(false);
 
 	LCDPrint();
 	UpdateSmartDashboard();
 }
 
-void RowdyFifteen::TeleopPeriodic()
-{	
+/*
+ * This function gets called periodically in Test mode
+ */
+void RowdyFifteen::TestPeriodic()
+{
 	/*
 	 * Grab values from all of the joysticks as the raw values.
 	 */
@@ -19,6 +27,7 @@ void RowdyFifteen::TeleopPeriodic()
 	r_y_raw = stickr.GetY();
 
 	drive_speed_ain_value = ds->GetAnalogIn(2);
+
 	missile_switch_speed_multiplier = 1.0;
 
 	if(ds->GetDigitalIn(8)) {
@@ -67,20 +76,6 @@ void RowdyFifteen::TeleopPeriodic()
 	}
 
 	/*
-	 * This is an intentional duplicate of the above code. If both triggers are pulled,
-	 * it would be nice if the values would go down by an additional power factor.
-	 *
-	 * So, if both triggers are pulled, then both left and right joysticks will be
-	 * multiplied by 0.125 overall.
-	 */
-	if((l_t && r_t) && dual_triggers_multiply_again) {
-		l_x *= master_trigger_power_factor;
-		l_y *= master_trigger_power_factor;
-		r_x *= master_trigger_power_factor;
-		r_y *= master_trigger_power_factor;
-	}
-
-	/*
 	 * Write the values for the rollers
 	 */
 	if(eb_values[0x1]) {
@@ -110,19 +105,18 @@ void RowdyFifteen::TeleopPeriodic()
 	/*
 	 * Write the values for the wings
 	 */
-
 	if(ea_values[0x6] || ea_values[0x4]) {
-		leftWing.Set(-0.6);
+		leftWing.Set(-1.0);
 	} else if(ea_values[0x7] || ea_values[0x5]) {
-		leftWing.Set(0.6);
+		leftWing.Set(1.0);
 	} else {
 		leftWing.Set(0.0);
 	}
 
 	if(ea_values[0x2] || ea_values[0x4]) {
-		rightWing.Set(0.6);
+		rightWing.Set(1.0);
 	} else if(ea_values[0x3] || ea_values[0x5]) {
-		rightWing.Set(-0.6);
+		rightWing.Set(-1.0);
 	} else {
 		rightWing.Set(0.0);
 	}
@@ -139,7 +133,7 @@ void RowdyFifteen::TeleopPeriodic()
 	 * Input the values into the drive function.
 	 */
 	myRobot.MecanumDrive_Cartesian(l_x, l_y, r_x);
-	
+
 	LCDPrint();
 	UpdateSmartDashboard();
 }

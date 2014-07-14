@@ -5,7 +5,7 @@
 
 #include <math.h>
 
-#include "Math/RowdyMath.h"
+#include "Rowdy15/Math/RowdyMath.h"
 #include "defines.h"
 #include "enums.h"
 
@@ -44,7 +44,7 @@ class RowdyFifteen : public IterativeRobot
 	float missile_switch_speed_multiplier;
 	float drive_speed_ain_value;
 
-public:
+ public:
 	RowdyFifteen();
 
 	void FactorJoystickValues(float *result, float *raw, float null_zone, float factor);

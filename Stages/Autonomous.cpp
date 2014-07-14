@@ -1,4 +1,4 @@
-#include "Rowdy15.h"
+#include "Rowdy15/Rowdy15.h"
 
 void RowdyFifteen::AutonomousInit()
 {
@@ -71,12 +71,12 @@ void RowdyFifteen::AutonomousInit()
 		//Stop drive and Rollers In/Out Left + Right Wing Up
 		myRobot.MecanumDrive_Cartesian(0.0, 0.0, 0.0);
 		Wait(0.3);
-		
+
 		leftRollers.Set(-0.7);
 		rightRollers.Set(-1.0);
 		rightWing.Set(0.8);
 		Wait(0.7);
-		
+
 		leftRollers.Set(0.0);
 		Wait(0.2);
 
@@ -99,32 +99,32 @@ void RowdyFifteen::AutonomousInit()
 		aSolenoid.Set(false);
 		bSolenoid.Set(false);
 		Wait(1.0);
-		
+
 		leftRollers.Set(1.0);
 		rightRollers.Set(-1.0);
 		Wait(0.1);
-		
+
 		leftWing.Set(-0.6);
 		rightWing.Set(0.6);
 		Wait(0.8);
-		
+
 		leftRollers.Set(0.0);
 		rightRollers.Set(0.0);
 		leftWing.Set(0.6);
 		rightWing.Set(-0.6);
 		Wait(0.6);
-		
+
 		leftWing.Set(0.0);
 		rightWing.Set(0.0);
 		aSolenoid.Set(true);
 		bSolenoid.Set(true);
 		Wait(0.2);
-		
+
 		aSolenoid.Set(false);
 		bSolenoid.Set(false);
 	} else if(!ds->GetDigitalIn(1) && !ds->GetDigitalIn(2) && !ds->GetDigitalIn(3)) {
 	}
-	
+
 	SetJoystickButtonValueRegisters();
 
 	LCDPrint();
@@ -134,7 +134,7 @@ void RowdyFifteen::AutonomousInit()
 void RowdyFifteen::AutonomousPeriodic()
 {
 	SetJoystickButtonValueRegisters();
-	
+
 	LCDPrint();
 	UpdateSmartDashboard();
 }
