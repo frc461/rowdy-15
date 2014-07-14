@@ -4,6 +4,8 @@
 #include "WPILib.h"
 
 #include <math.h>
+
+#include "Math/RowdyMath.h"
 #include "defines.h"
 #include "enums.h"
 
