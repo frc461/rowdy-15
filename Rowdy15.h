@@ -67,4 +67,5 @@ public:
 	void TestInit();
 	void TestPeriodic();
 };
+
 #endif
