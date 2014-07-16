@@ -1,6 +1,6 @@
 SimpleTemplate_partialImage/Debug/Objects/rowdy-15/Rowdy15.o:  \
  C:/Users/Owner/Desktop/Documents/GitHub/rowdy-15/Rowdy15.cpp \
-  C:/Users/Owner/Desktop/Documents/GitHub/rowdy-15/Rowdy15.h \
+  C:/Users/Owner/Desktop/Documents/GitHub/rowdy-15/Rowdy15/Rowdy15.h \
   C:/WindRiver/vxworks-6.3/target/h/WPILib/WPILib.h \
   C:/WindRiver/vxworks-6.3/target/h/string.h \
   C:/WindRiver/vxworks-6.3/target/h/types/vxANSI.h \
@@ -385,10 +385,11 @@ SimpleTemplate_partialImage/Debug/Objects/rowdy-15/Rowdy15.o:  \
   C:/WindRiver/vxworks-6.3/target/h/WPILib/Vision/ColorImage.h \
   C:/WindRiver/vxworks-6.3/target/h/WPILib/WPIErrors.h \
   C:/WindRiver/vxworks-6.3/target/h/math.h \
-  C:/Users/Owner/Desktop/Documents/GitHub/rowdy-15/defines.h \
-  C:/Users/Owner/Desktop/Documents/GitHub/rowdy-15/enums.h
+  C:/Users/Owner/Desktop/Documents/GitHub/rowdy-15/Rowdy15/Math/RowdyMath.h \
+  C:/Users/Owner/Desktop/Documents/GitHub/rowdy-15/Rowdy15/defines.h \
+  C:/Users/Owner/Desktop/Documents/GitHub/rowdy-15/Rowdy15/enums.h
 
-C:/Users/Owner/Desktop/Documents/GitHub/rowdy-15/Rowdy15.h:
+C:/Users/Owner/Desktop/Documents/GitHub/rowdy-15/Rowdy15/Rowdy15.h:
 
 C:/WindRiver/vxworks-6.3/target/h/WPILib/WPILib.h:
 
@@ -1158,6 +1159,8 @@ C:/WindRiver/vxworks-6.3/target/h/WPILib/WPIErrors.h:
 
 C:/WindRiver/vxworks-6.3/target/h/math.h:
 
-C:/Users/Owner/Desktop/Documents/GitHub/rowdy-15/defines.h:
+C:/Users/Owner/Desktop/Documents/GitHub/rowdy-15/Rowdy15/Math/RowdyMath.h:
 
-C:/Users/Owner/Desktop/Documents/GitHub/rowdy-15/enums.h:
+C:/Users/Owner/Desktop/Documents/GitHub/rowdy-15/Rowdy15/defines.h:
+
+C:/Users/Owner/Desktop/Documents/GitHub/rowdy-15/Rowdy15/enums.h:

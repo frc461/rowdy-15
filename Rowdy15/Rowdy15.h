@@ -5,7 +5,7 @@
 
 #include <math.h>
 
-#include "Rowdy15/Math/RowdyMath.h"
+#include "Math/RowdyMath.h"
 #include "defines.h"
 #include "enums.h"
 
