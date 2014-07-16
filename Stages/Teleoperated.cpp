@@ -39,10 +39,10 @@ void RowdyFifteen::TeleopPeriodic()
 	 * Apply weighting factors and alleviate the garbage that the joysticks
 	 * output when resting (the phantom values).
 	 */
-	l_x = master_power_factor * (((l_x_raw >  left_js_null_zone) || (l_x_raw < - left_js_null_zone)) ? l_x_raw : 0.0) * (drive_speed_ain_value / 5.0) * missile_switch_speed_multiplier;
-	l_y = master_power_factor * (((l_y_raw >  left_js_null_zone) || (l_y_raw < - left_js_null_zone)) ? l_y_raw : 0.0) * (drive_speed_ain_value / 5.0) * missile_switch_speed_multiplier;
-	r_x = master_power_factor * (((r_x_raw > right_js_null_zone) || (r_x_raw < -right_js_null_zone)) ? r_x_raw : 0.0) * (drive_speed_ain_value / 5.0) * missile_switch_speed_multiplier;
-	r_y = master_power_factor * (((r_y_raw > right_js_null_zone) || (r_y_raw < -right_js_null_zone)) ? r_y_raw : 0.0) * (drive_speed_ain_value / 5.0) * missile_switch_speed_multiplier;
+	l_x = master_power_factor * RowdyMath::FloatNullZonify(l_x_raw, left_js_null_zone) * (drive_speed_ain_value / 5.0) * missile_switch_speed_multiplier;
+	l_y = master_power_factor * RowdyMath::FloatNullZonify(l_y_raw, left_js_null_zone) * (drive_speed_ain_value / 5.0) * missile_switch_speed_multiplier;
+	r_x = master_power_factor * RowdyMath::FloatNullZonify(r_x_raw, right_js_null_zone) * (drive_speed_ain_value / 5.0) * missile_switch_speed_multiplier;
+	r_y = master_power_factor * RowdyMath::FloatNullZonify(r_y_raw, right_js_null_zone) * (drive_speed_ain_value / 5.0) * missile_switch_speed_multiplier;
 
 	SetJoystickButtonValueRegisters();
 
