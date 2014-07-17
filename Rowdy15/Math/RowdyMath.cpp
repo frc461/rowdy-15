@@ -22,7 +22,7 @@ void RowdyMath::FloatWeightedAverage_InPlace(float *result, float a, float a_wei
 
 double RowdyMath::DoubleNullZonify(double value, double null_zone)
 {
-	if(value <= +null_zone ||
+	if(value <= +null_zone &&
 	   value >= -null_zone) {
 		return 0.0;
 	} else {
@@ -32,7 +32,7 @@ double RowdyMath::DoubleNullZonify(double value, double null_zone)
 
 void RowdyMath::DoubleNullZonify_InPlace(double *value, double null_zone)
 {
-	if(*value <= +null_zone ||
+	if(*value <= +null_zone &&
 	   *value >= -null_zone) {
 		*value = 0.0;
 	}
@@ -40,7 +40,7 @@ void RowdyMath::DoubleNullZonify_InPlace(double *value, double null_zone)
 
 float RowdyMath::FloatNullZonify(float value, float null_zone)
 {
-	if(value <= +null_zone ||
+	if(value <= +null_zone &&
 	   value >= -null_zone) {
 		return 0.0;
 	} else {
@@ -50,7 +50,7 @@ float RowdyMath::FloatNullZonify(float value, float null_zone)
 
 void RowdyMath::FloatNullZonify_InPlace(float *value, float null_zone)
 {
-	if(*value <= +null_zone ||
+	if(*value <= +null_zone &&
 	   *value >= -null_zone) {
 		*value = 0.0;
 	}
