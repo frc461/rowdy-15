@@ -4,14 +4,12 @@ void RowdyFifteen::PracticeInit()
 {
 	SetJoystickButtonValueRegisters();
 
-	LCDPrint();
-	UpdateSmartDashboard();
+	UpdateOutputs();
 }
 
 void RowdyFifteen::PracticePeriodic()
 {
 	SetJoystickButtonValueRegisters();
 
-	LCDPrint();
-	UpdateSmartDashboard();
+	UpdateOutputs();
 }
