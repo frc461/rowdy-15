@@ -127,14 +127,12 @@ void RowdyFifteen::AutonomousInit()
 
 	SetJoystickButtonValueRegisters();
 
-	LCDPrint();
-	UpdateSmartDashboard();
+	UpdateOutputs();
 }
 
 void RowdyFifteen::AutonomousPeriodic()
 {
 	SetJoystickButtonValueRegisters();
 
-	LCDPrint();
-	UpdateSmartDashboard();
+	UpdateOutputs();
 }

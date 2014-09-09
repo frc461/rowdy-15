@@ -26,6 +26,8 @@ class RowdyFifteen : public IterativeRobot
 	Solenoid bSolenoid;
 	Compressor compressor;
 
+	bool party_mode;
+
 	vector<bool> l_values;
 	vector<bool> r_values;
 	vector<bool> ea_values;
@@ -44,14 +46,16 @@ class RowdyFifteen : public IterativeRobot
 	float missile_switch_speed_multiplier;
 	float drive_speed_ain_value;
 
- public:
+public:
 	RowdyFifteen();
 
 	void FactorJoystickValues(float *result, float *raw, float null_zone, float factor);
 
-	void UpdateSmartDashboard();
 	void SetJoystickButtonValueRegister(Joystick *, vector<bool> *);
 	void SetJoystickButtonValueRegisters();
+
+	void UpdateSmartDashboard();
+	void UpdateOutputs();
 	void LCDPrint();
 
 	void DisabledInit();
