@@ -3,30 +3,32 @@
 void RowdyFifteen::AutonomousInit()
 {
 	/*
-	 * Supress warnings about not updating often enough.
+	 * Suppress warnings about not updating often enough.
 	 */
 	myRobot.SetSafetyEnabled(false);
 
 	if(ds->GetDigitalIn(1)) {
-		b->Printf(b->kUser_Line3, 1, "/!\\ A_1");
+		b->Printf(b->kUser_Line5, 1, "Running 1-ball Autonomous.");
 		b->UpdateLCD();
 
 		leftWing.Set(0.6);
 		rightWing.Set(-0.6);
-		Wait(0.6);
+		Wait(0.2);
 
 		leftWing.Set(0);
 		rightWing.Set(0);
-		Wait(0.5);
+		Wait(0.4);
 
 		leftWing.Set(-0.6);
 		rightWing.Set(0.6);
 		leftRollers.Set(1.0);
 		rightRollers.Set(-1.0);
-		Wait(0.6);
+		Wait(0.2);
 
 		leftWing.Set(0.0);
 		rightWing.Set(0.0);
+		Wait(0.4);
+		
 		leftRollers.Set(0.0);
 		rightRollers.Set(0.0);
 		myRobot.MecanumDrive_Cartesian(0.0, -0.5, 0.0);
@@ -49,6 +51,9 @@ void RowdyFifteen::AutonomousInit()
 		bSolenoid.Set(false);
 		Wait(1.0);
 	} else if(ds->GetDigitalIn(2)) {
+		b->Printf(b->kUser_Line5, 1, "Running 2-ball Autonomous.");
+		b->UpdateLCD();
+
 		//Move the wings down
 		leftWing.Set(0.6);
 		rightWing.Set(-0.6);
@@ -123,6 +128,16 @@ void RowdyFifteen::AutonomousInit()
 		aSolenoid.Set(false);
 		bSolenoid.Set(false);
 	} else if(!ds->GetDigitalIn(1) && !ds->GetDigitalIn(2) && !ds->GetDigitalIn(3)) {
+		b->Printf(b->kUser_Line5, 1, "Running no-ball Autonomous.");
+		b->UpdateLCD();
+
+		/*
+		 * Only drive forward.
+		 */
+		myRobot.MecanumDrive_Cartesian(0.0, -0.5, 0.0);
+		Wait(ds->GetAnalogIn(1));
+		
+		myRobot.MecanumDrive_Cartesian(0.0, 0.0, 0.0);
 	}
 
 	SetJoystickButtonValueRegisters();
@@ -134,7 +149,7 @@ void RowdyFifteen::AutonomousInit()
 void RowdyFifteen::AutonomousPeriodic()
 {
 	SetJoystickButtonValueRegisters();
-
+	
 	LCDPrint();
 	UpdateSmartDashboard();
 }

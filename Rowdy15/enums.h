@@ -15,10 +15,6 @@ enum RobotWingPorts {
 	w_pwm_wing_right = 10
 };
 
-/*enum RobotMiscellaneousPorts {
-	m_rel_aim_confirm_led = 2
-};*/
-
 enum RobotPneumaticsPorts {
 	p_sol_shooter_a = 7,
 	p_sol_shooter_b = 8,
