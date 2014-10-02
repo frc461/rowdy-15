@@ -4,8 +4,7 @@ void RowdyFifteen::TeleopInit()
 {
 	myRobot.SetSafetyEnabled(false);
 
-	LCDPrint();
-	UpdateSmartDashboard();
+	UpdateOutputs();
 }
 
 void RowdyFifteen::TeleopPeriodic()
@@ -140,6 +139,5 @@ void RowdyFifteen::TeleopPeriodic()
 	 */
 	myRobot.MecanumDrive_Cartesian(l_x, l_y, r_x);
 
-	LCDPrint();
-	UpdateSmartDashboard();
+	UpdateOutputs();
 }

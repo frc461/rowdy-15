@@ -31,6 +31,12 @@ RowdyFifteen::RowdyFifteen(void):
 	r_y_raw = stickr.GetY();
 
 	/*
+	 * We shouldn't party right-the-bat.  Maybe on days when
+	 * false is true, but not right off-the-bat.
+	 */
+	party_mode = false;
+
+	/*
 	 * Get an instance of the Driver Station stuff
 	 */
 	ds = DriverStation::GetInstance();
@@ -69,6 +75,12 @@ void RowdyFifteen::FactorJoystickValues(float *result, float *raw, float null_zo
 	}
 
 	*result = *raw * factor;
+}
+
+void RowdyFifteen::UpdateOutputs()
+{
+	UpdateSmartDashboard();
+	LCDPrint();
 }
 
 /*
