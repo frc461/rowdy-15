@@ -90,25 +90,27 @@ void RowdyFifteen::UpdateSmartDashboard()
 {
 	SmartDashboard::PutBoolean("Compressor", (bool) compressor.GetPressureSwitchValue());
 
-	SmartDashboard::PutBoolean("Blue Missile Switch", eb_values[0x4]);
-	SmartDashboard::PutBoolean("Orange Missile Switch", eb_values[0x5]);
-	SmartDashboard::PutBoolean("Green Missile Switch", eb_values[0x6]);
+	//	SmartDashboard::PutBoolean("Blue Missile Switch", !eb_values[0x4]);
+	//	SmartDashboard::PutBoolean("Orange Missile Switch", eb_values[0x5]);
+	//	SmartDashboard::PutBoolean("Green Missile Switch", eb_values[0x6]);
 
-	SmartDashboard::PutBoolean("Left Wing Up Button", ea_values[0x6]);
-	SmartDashboard::PutBoolean("Left Wing Down Button", ea_values[0x7]);
-	SmartDashboard::PutBoolean("Both Wings Up Button", ea_values[0x4]);
-	SmartDashboard::PutBoolean("Both Wings Down Button", ea_values[0x5]);
-	SmartDashboard::PutBoolean("Right Wing Up Button", ea_values[0x2]);
-	SmartDashboard::PutBoolean("Right Wing Down Button", ea_values[0x3]);
+	SmartDashboard::PutBoolean("Lower Power Button",ea_values[lower_power_button]);
 
-	SmartDashboard::PutBoolean("Left Rollers Out Switch", eb_values[0x0]);
-	SmartDashboard::PutBoolean("Left Rollers In Switch", eb_values[0x1]);
-	SmartDashboard::PutBoolean("Both Rollers Out Switch", ea_values[0xa]);
-	SmartDashboard::PutBoolean("Both Rollers In Switch", ea_values[0xb]);
-	SmartDashboard::PutBoolean("Right Rollers Out Switch", ea_values[0x8]);
-	SmartDashboard::PutBoolean("Right Rollers In Switch", ea_values[0x9]);
+	SmartDashboard::PutBoolean("Left Wing Up Button", ea_values[left_wing_up]);
+	SmartDashboard::PutBoolean("Left Wing Down Button", ea_values[left_wing_down]);
+	SmartDashboard::PutBoolean("Both Wings Up Button", ea_values[both_wings_up]);
+	SmartDashboard::PutBoolean("Both Wings Down Button", ea_values[both_wings_down]);
+	SmartDashboard::PutBoolean("Right Wing Up Button", ea_values[right_wing_up]);
+	SmartDashboard::PutBoolean("Right Wing Down Button", ea_values[right_wing_down]);
 
-	SmartDashboard::PutBoolean("Fire Button", ea_values[0x0]);
+	SmartDashboard::PutBoolean("Left Rollers Out Switch", ea_values[left_roller_out]);
+	SmartDashboard::PutBoolean("Left Rollers In Switch", ea_values[left_roller_in]);
+	SmartDashboard::PutBoolean("Both Rollers Out Switch", ea_values[both_roller_out]);
+	SmartDashboard::PutBoolean("Both Rollers In Switch", ea_values[both_roller_in]);
+	SmartDashboard::PutBoolean("Right Rollers Out Switch", ea_values[right_roller_out]);
+	SmartDashboard::PutBoolean("Right Rollers In Switch", ea_values[right_roller_in]);
+
+	SmartDashboard::PutBoolean("Fire Button", ea_values[fire_button]);
 }
 
 /*
