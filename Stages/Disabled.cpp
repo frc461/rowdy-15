@@ -18,7 +18,7 @@ void RowdyFifteen::DisabledPeriodic()
 
 	if(party_mode) {
 		for(uint32_t i = 1; i <= 8; i += 1) {
-			ds->SetDigitalOut(rand() % 2);
+//			ds->SetDigitalOut(rand() % 2);
 		}
 	}
 

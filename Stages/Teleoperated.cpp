@@ -20,7 +20,7 @@ void RowdyFifteen::TeleopPeriodic()
 	drive_speed_ain_value = ds->GetAnalogIn(2);
 	missile_switch_speed_multiplier = 1.0;
 
-	if(ds->GetDigitalIn(8)) {
+/*	if(ds->GetDigitalIn(8)) {
 		if(eb_values[0x4]) {
 			missile_switch_speed_multiplier *= 0.5;
 		}
@@ -32,7 +32,7 @@ void RowdyFifteen::TeleopPeriodic()
 		if(eb_values[0x6]) {
 			missile_switch_speed_multiplier *= 0.5;
 		}
-	}
+	}*/
 
 	/*
 	 * Apply weighting factors and alleviate the garbage that the joysticks
@@ -82,26 +82,28 @@ void RowdyFifteen::TeleopPeriodic()
 	/*
 	 * Write the values for the rollers
 	 */
-	if(eb_values[0x1]) {
+	if(!ea_values[left_roller_in]) {
 		leftRollers.Set(1.0);
-	} else if(eb_values[0x0]) {
+	} else if(!ea_values[left_roller_out]) {
 		leftRollers.Set(-1.0);
 	} else {
 		leftRollers.Set(0.0);
 	}
 
-	if(ea_values[0x8]) {
-		rightRollers.Set(1.0);
-	} else if(ea_values[0x9]) {
+	if(ea_values[right_roller_in]) {
 		rightRollers.Set(-1.0);
-	} else {
+	} 
+	else if( ea_values[right_roller_out]) {
+		rightRollers.Set(1.0);
+	}
+	else {
 		rightRollers.Set(0.0);
 	}
 
-	if(ea_values[0xa]) {
+	if(!ea_values[both_roller_out]) {
 		rightRollers.Set(1.0);
 		leftRollers.Set(-1.0);
-	} else if(ea_values[0xb]) {
+	} else if(!ea_values[both_roller_in]) {
 		rightRollers.Set(-1.0);
 		leftRollers.Set(1.0);
 	}
@@ -110,23 +112,23 @@ void RowdyFifteen::TeleopPeriodic()
 	 * Write the values for the wings
 	 */
 
-	if(ea_values[0x6] || ea_values[0x4]) {
+	if(!ea_values[left_wing_up] || !ea_values[both_wings_up]) {
 		leftWing.Set(-0.6);
-	} else if(ea_values[0x7] || ea_values[0x5]) {
+	} else if(!ea_values[left_wing_down] || !ea_values[both_wings_down]) {
 		leftWing.Set(0.6);
 	} else {
 		leftWing.Set(0.0);
 	}
 
-	if(ea_values[0x2] || ea_values[0x4]) {
+	if(!ea_values[right_wing_up] || !ea_values[both_wings_up]) {
 		rightWing.Set(0.6);
-	} else if(ea_values[0x3] || ea_values[0x5]) {
+	} else if(!ea_values[right_wing_down] || !ea_values[both_wings_down]) {
 		rightWing.Set(-0.6);
 	} else {
 		rightWing.Set(0.0);
 	}
 
-	if(ea_values[0x0]) {
+	if(!ea_values[fire_button]) {
 		aSolenoid.Set(true);
 		bSolenoid.Set(true);
 	} else {
