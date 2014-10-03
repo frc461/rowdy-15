@@ -93,7 +93,7 @@ void RowdyFifteen::TeleopPeriodic()
 	if(ea_values[right_roller_in]) {
 		rightRollers.Set(-1.0);
 	}
-	else if( ea_values[right_roller_out]) {
+	else if(ea_values[right_roller_out]) {
 		rightRollers.Set(1.0);
 	}
 	else {
@@ -130,7 +130,7 @@ void RowdyFifteen::TeleopPeriodic()
 
 	//This means it should fire. Sanity check.
 
-	/*
+
 	  if(!ea_values[fire_button]) {
 	  aSolenoid.Set(true);
 	  bSolenoid.Set(true);
@@ -138,7 +138,7 @@ void RowdyFifteen::TeleopPeriodic()
 	  aSolenoid.Set(false);
 	  bSolenoid.Set(false);
 	  }
-	*/
+
 
 	/*
 	 * Input the values into the drive function.

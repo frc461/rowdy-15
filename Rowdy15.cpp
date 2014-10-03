@@ -124,6 +124,7 @@ void RowdyFifteen::SetJoystickButtonValueRegister(Joystick *joystick, vector<boo
 	 */
 	value_registry->clear();
 
+		
 	for(uint32_t i = 0; i < 12; i += 1) {
 		/*
 		 * Push the value for each channel (1-12)
@@ -181,9 +182,7 @@ void RowdyFifteen::LCDPrint()
 	          (ea_values[0x8] ? "9" : ""),
 	          (ea_values[0x9] ? "a" : ""),
 	          (ea_values[0xa] ? "b" : ""),
-	          (ea_values[0xb] ? "c" : "")
-			  (ea_values[0xc] ? "d" : "")
-			  (ea_values[0xd] ? "e" : ""));
+	          (ea_values[0xb] ? "c" : ""));
 	b->Printf(b->kUser_Line4, 1, "b %s%s%s%s%s%s%s%s%s%s%s%s",
 	          (eb_values[0x0] ? "1" : ""),
 	          (eb_values[0x1] ? "2" : ""),
