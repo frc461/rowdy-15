@@ -82,9 +82,9 @@ void RowdyFifteen::TeleopPeriodic()
 	/*
 	 * Write the values for the rollers
 	 */
-	if(!ea_values[left_roller_in]) {
+	if(ea_values[left_roller_in]) {
 		leftRollers.Set(1.0);
-	} else if(!ea_values[left_roller_out]) {
+	} else if(ea_values[left_roller_out]) {
 		leftRollers.Set(-1.0);
 	} else {
 		leftRollers.Set(0.0);
@@ -100,10 +100,10 @@ void RowdyFifteen::TeleopPeriodic()
 		rightRollers.Set(0.0);
 	}
 
-	if(!ea_values[both_roller_out]) {
+	if(ea_values[both_roller_out]) {
 		rightRollers.Set(1.0);
 		leftRollers.Set(-1.0);
-	} else if(!ea_values[both_roller_in]) {
+	} else if(ea_values[both_roller_in]) {
 		rightRollers.Set(-1.0);
 		leftRollers.Set(1.0);
 	}
@@ -112,33 +112,29 @@ void RowdyFifteen::TeleopPeriodic()
 	 * Write the values for the wings
 	 */
 
-	if(!ea_values[left_wing_up] || !ea_values[both_wings_up]) {
+	if(ea_values[left_wing_up] || ea_values[both_wings_up]) {
 		leftWing.Set(-0.6);
-	} else if(!ea_values[left_wing_down] || !ea_values[both_wings_down]) {
+	} else if(ea_values[left_wing_down] || ea_values[both_wings_down]) {
 		leftWing.Set(0.6);
 	} else {
 		leftWing.Set(0.0);
 	}
 
-	if(!ea_values[right_wing_up] || !ea_values[both_wings_up]) {
+	if(ea_values[right_wing_up] || ea_values[both_wings_up]) {
 		rightWing.Set(0.6);
-	} else if(!ea_values[right_wing_down] || !ea_values[both_wings_down]) {
+	} else if(ea_values[right_wing_down] || ea_values[both_wings_down]) {
 		rightWing.Set(-0.6);
 	} else {
 		rightWing.Set(0.0);
 	}
 
-	//This means it should fire. Sanity check.
-
-
-	  if(!ea_values[fire_button]) {
+	  if(ea_values[fire_button]) {
 	  aSolenoid.Set(true);
 	  bSolenoid.Set(true);
 	  } else {
 	  aSolenoid.Set(false);
 	  bSolenoid.Set(false);
 	  }
-
 
 	/*
 	 * Input the values into the drive function.
