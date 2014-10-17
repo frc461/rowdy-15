@@ -90,10 +90,10 @@ void RowdyFifteen::TeleopPeriodic()
 		leftRollers.Set(0.0);
 	}
 
-	if(ea_values[right_roller_in]) {
+	if(eb_values[right_roller_in]) {
 		rightRollers.Set(-1.0);
 	}
-	else if(ea_values[right_roller_out]) {
+	else if(eb_values[right_roller_out]) {
 		rightRollers.Set(1.0);
 	}
 	else {

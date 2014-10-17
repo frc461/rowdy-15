@@ -51,20 +51,23 @@ enum Attack3Buttons {
 };
 
 enum ea_pretty_name {
-		both_wings_down = 0x0,
-		both_wings_up = 0x1,
-		left_wing_up = 0x2,
-		left_wing_down = 0x3,
+		both_wings_down = 0x6,
+		both_wings_up = 0x5,
+		left_wing_up = 0x3,
+		left_wing_down = 0x7,
 		fire_button = 0x4,
-		lower_power_button = 0x5,
-		right_wing_up = 0x6,
-		right_wing_down = 0x7,
+		lower_power_button = 0x0,
+		right_wing_up = 0x2,
+		right_wing_down = 0x1,
 		left_roller_in = 0x8,
 		left_roller_out = 0x9,
 		both_roller_out = 0xa,
-		both_roller_in = 0xb,
-		right_roller_in = 0xc,
-		right_roller_out = 0xd
+		both_roller_in = 0xb
 };
+enum eb_pretty_name {
+	right_roller_in = 0x1,
+	right_roller_out = 0x2
+};
+
 
 #endif
