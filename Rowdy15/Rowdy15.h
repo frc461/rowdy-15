@@ -45,6 +45,8 @@ class RowdyFifteen : public IterativeRobot
 
 	float missile_switch_speed_multiplier;
 	float drive_speed_ain_value;
+	
+	int timer;
 
 public:
 	RowdyFifteen();

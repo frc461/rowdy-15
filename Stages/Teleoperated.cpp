@@ -112,19 +112,29 @@ void RowdyFifteen::TeleopPeriodic()
 	 * Write the values for the wings
 	 */
 
-	if(ea_values[left_wing_up] || ea_values[both_wings_up]) {
+	if((ea_values[left_wing_up] || ea_values[both_wings_up]) && timer < 2000) {
+		timer++;
 		leftWing.Set(-0.6);
-	} else if(ea_values[left_wing_down] || ea_values[both_wings_down]) {
+	} else if((ea_values[left_wing_down] || ea_values[both_wings_down]) && timer > -2000) {
+		timer--;
 		leftWing.Set(0.6);
 	} else {
+		if(!ea_values[right_wing_up] && !ea_values[right_wing_down])
+		timer = 0;
 		leftWing.Set(0.0);
 	}
 
-	if(ea_values[right_wing_up] || ea_values[both_wings_up]) {
+	if((ea_values[right_wing_up] || ea_values[both_wings_up]) && timer < 2000) {
+		if(!ea_values[both_wings_up])
+			timer++;
 		rightWing.Set(0.6);
-	} else if(ea_values[right_wing_down] || ea_values[both_wings_down]) {
+	} else if((ea_values[right_wing_down] || ea_values[both_wings_down]) && timer > -2000) {
+		if(!ea_values[both_wings_down])
+			timer--;
 		rightWing.Set(-0.6);
 	} else {
+		if(!ea_values[left_wing_down] && !ea_values[left_wing_up])
+			timer = 0;
 		rightWing.Set(0.0);
 	}
 

@@ -53,10 +53,10 @@ enum Attack3Buttons {
 enum ea_pretty_name {
 		both_wings_down = 0x6,
 		both_wings_up = 0x5,
-		left_wing_up = 0x3,
+		left_wing_up = 0x0,
 		left_wing_down = 0x7,
 		fire_button = 0x4,
-		lower_power_button = 0x0,
+		lower_power_button = 0x3,
 		right_wing_up = 0x2,
 		right_wing_down = 0x1,
 		left_roller_in = 0x8,

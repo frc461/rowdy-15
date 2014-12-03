@@ -35,6 +35,11 @@ RowdyFifteen::RowdyFifteen(void):
 	 * false is true, but not right off-the-bat.
 	 */
 	party_mode = false;
+	
+	/* The timer thing. #hacksy
+	 * 
+	 */
+	timer = 0;
 
 	/*
 	 * Get an instance of the Driver Station stuff
