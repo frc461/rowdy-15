@@ -201,6 +201,8 @@ void RowdyFifteen::LCDPrint()
 	          (eb_values[0x9] ? "a" : ""),
 	          (eb_values[0xa] ? "b" : ""),
 	          (eb_values[0xb] ? "c" : ""));
+	b->Printf(b->kUser_Line5, 1, "joyl (%f, %f)", l_x, l_y);
+	b->Printf(b->kUser_Line6, 1, "joyr (%f, %f)", r_x, r_y);
 	b->UpdateLCD();
 }
 
